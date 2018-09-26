@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <title>Anime Watch</title>
     <link href="./project-zero.css" type="text/css" rel="stylesheet">
 </head>
+
 <body>
     <header id="title-bar">
         <h1>Anime Watch</h1>
@@ -17,13 +19,33 @@
                 <li>Watchlist</li>
                 <li>Characters</li>
                 <li>List Item</li>
-                <li>Search</li>
+                <li>
+                    <input id="search-box" type="text" placeholder="Search for Anime here!">
+                    <button id="search" type="submit" onclick="searchBox()">Search</button>
+                </li>
             </ul>
         </nav>
     </header>
     <section id="content-area">
-        <div></div>
+        <div>
+            <img id="poster-image" src="">
+            <form>
+                <h2 id="anime-name"></h2>
+                <label for="ongoing">Status:
+                    <li id="status"></li>
+                </label>
+                <br>
+                <label for="release-date">Release Date:
+                    <li id="start-date"></li>
+                </label>
+                <br>
+                <label for="number-of-episodes">Number of Episodes:
+                    <li id="episodes-count"></li>
+                </label>
+            </form>
+        </div>
     </section>
     <script src="project-zero.js"></script>
 </body>
+
 </html>

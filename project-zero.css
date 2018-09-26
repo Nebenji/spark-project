@@ -2,6 +2,8 @@
 
 body{
     background: darkred;
+    background-image: url('https://az616578.vo.msecnd.net/files/responsive/cover/main/desktop/2016/05/22/6359949242235344891413001074_All%20the%20anime.jpeg');
+    object-fit: contain;
 }
 
 #title-bar{
@@ -24,6 +26,11 @@ body{
     color: goldenrod;
 }
 
+#title-bar > h1:hover{
+    color: yellow;
+    cursor: pointer;    
+}
+
 #title-bar > nav > ul{
     display: flex;
     justify-content: space-around;
@@ -42,13 +49,37 @@ nav ul, nav li{
 }
 
 #content-area{
-    display: inline-block;
-    text-align: center;
+    display: flex;
+    text-align: left;
+    flex-grow: 1;
     background: tomato;
     padding: 0;
-    margin-top: 9%;
+    margin-top: 20vh;
     margin-left: 20%;
     margin-right: 20%;
     width: 59.5vw;
-    height: 80vh;
+    min-height: 40vh;
+}
+
+h2{
+
+    text-align: center;
+
+}
+
+div{
+    display: flex;
+    justify-content: left;
+    background: whitesmoke;
+    width: 59.5vw;
+    max-height: 250px;
+    flex-grow: 1;
+}
+
+div > img{
+    display: flex;
+    justify-content: flex-start;
+    object-fit: contain;
+    max-height: 350px;
+    max-width: 350px;
 }
