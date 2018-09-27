@@ -11,14 +11,20 @@ let anime = {
 
 };
 
+let chara = {
+
+    canonicalName: '',
+    image: '',
+    description: '',
+    otherNames: '',
+
+};
+
 let data;
-
-
-//let apiUrl = 'https://kitsu.io/api/edge/anime?filter[text]=cowboy%20bebop';
 
 let apiUrl = 'https://kitsu.io/api/edge/anime?filter[text]=my hero academia';
 
-//let charUrl = 'https://kitsu.io/api/edge/characters?filter[text]=';
+let charUrl = 'https://kitsu.io/api/edge/characters?filter[name]=';
 
 let getAnimeUsingAsync = async function(){
     try{
@@ -28,7 +34,7 @@ let getAnimeUsingAsync = async function(){
         anime = data.data[0].attributes;
         //console.log((await response.json()));
         //console.log(anime);
-        updateContent();
+        updateAnimeContent();
     }
     catch (err){
         console.log('Something went wrong!');
@@ -36,7 +42,23 @@ let getAnimeUsingAsync = async function(){
     }
 }
 
-let updateContent = function(){
+let getCharUsingAsync = async function(){
+    try{
+        const response = await fetch(charUrl);
+        data = (await response.json());
+
+        chara = data.data[0].attributes;
+        //console.log(data);
+        //console.log(chara);
+        updateCharaContent();
+    }
+    catch (err){
+        console.log('Something went wrong!');
+        console.log(err);
+    }
+}
+
+let updateAnimeContent = function(){
 
     console.log(anime);
     
@@ -56,33 +78,46 @@ let updateContent = function(){
 
 }
 
+let updateCharaContent = function(){
+
+    console.log(chara);
+    
+    const name = document.getElementById('char-name');
+    const cover = document.querySelector('body');
+    const poster = document.getElementById('poster-image');
+    const describe = document.getElementById('char-info');
+    const altName = document.getElementById('other-name');
+
+    name.innerText = chara.canonicalName;
+    poster.src = chara.image.original;
+    cover.style.backgroundImage = 'url(' + chara.image.original + ')';
+    describe.innerText = chara.description;
+    altName.innerText = chara.otherNames[0];
+
+}
+
 let searchBox = function(){
 
     const text = document.getElementById('search-box');
     //console.log(text.value);
     apiUrl = 'https://kitsu.io/api/edge/anime?filter[text]=' + text.value;
-    //charUrl = 'https://kitsu.io/api/edge/characters?filter[text]=' + text.value;
-    console.log(apiUrl);
-    //console.log(charUrl);
-    //apiUrl = charUrl;
+    //console.log(apiUrl);
     getAnimeUsingAsync();
+    document.getElementById('search-box').value = '';
+
+}
+
+let charsearchBox = function(){
+
+    const text = document.getElementById('search-box');
+    //console.log(text.value);
+    charUrl = 'https://kitsu.io/api/edge/characters?filter[name]=' + text.value;
+    //console.log(charUrl);
+    getCharUsingAsync();
     document.getElementById('search-box').value = '';
 
 }
 
 //document.getElementById('search').addEventListener('onclick', searchBox());
 
-// let request = new XMLHttpRequest();
-
-// request.open('GET', 'https://kitsu.io/api/edge/anime');
-
-// request.onreadystatechange = function () {
-//   if (this.readyState === 4) {
-//     console.log('Status:', this.status);
-//     console.log('Headers:', this.getAllResponseHeaders());
-//     console.log('Body:', this.responseText);
-//   }
-// };
-
-// request.send();
 

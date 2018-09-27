@@ -6,6 +6,11 @@ body{
     object-fit: contain;
 }
 
+a{
+    color: inherit;
+    text-decoration: inherit;
+}
+
 #title-bar{
     display: inline-block;
     text-align: center;
@@ -22,11 +27,11 @@ body{
     z-index: 5;
 }
 
-#title-bar > h1{
+#title-bar > a > h1{
     color: goldenrod;
 }
 
-#title-bar > h1:hover{
+#title-bar > a > h1:hover{
     color: yellow;
     cursor: pointer;    
 }
@@ -36,7 +41,7 @@ body{
     justify-content: space-around;
 }
 
-#title-bar > nav > ul > li:hover{
+#title-bar > nav > ul > a > li:hover{
     color: lightgray;
 }
 
@@ -72,8 +77,11 @@ div{
     justify-content: left;
     background: whitesmoke;
     width: 59.5vw;
-    max-height: 250px;
+    min-height: 250px;
     flex-grow: 1;
+    border: 2px solid black;
+    box-shadow: 0px 2px 2px 0px gray;
+    list-style-type: square;
 }
 
 div > img{
@@ -82,4 +90,10 @@ div > img{
     object-fit: contain;
     max-height: 350px;
     max-width: 350px;
+}
+
+#other-name{
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
