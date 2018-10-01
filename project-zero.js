@@ -2,12 +2,13 @@
 
 let anime = {
 
-    canonicalTitle: '',
+    titles: '',
     startDate: '',
     episodeCount: '',
     status: '',
     posterImage: '',
     coverImage: '',
+    synopsis: '',
 
 };
 
@@ -33,7 +34,7 @@ let getAnimeUsingAsync = async function(){
 
         anime = data.data[0].attributes;
         //console.log((await response.json()));
-        //console.log(anime);
+        console.log(anime);
         updateAnimeContent();
     }
     catch (err){
@@ -68,13 +69,15 @@ let updateAnimeContent = function(){
     const ongoing = document.getElementById('status');
     const cover = document.querySelector('body');
     const poster = document.getElementById('poster-image');
+    const summary = document.getElementById('summary');
 
-    title.innerText = anime.canonicalTitle;
+    title.innerText = anime.titles.en_jp + ' ( ' + anime.titles.ja_jp + ' ) ';
     start.innerText = anime.startDate;
     episode.innerText = anime.episodeCount;
     ongoing.innerText = anime.status;
     poster.src = anime.posterImage.medium;
     cover.style.backgroundImage = 'url(' + anime.coverImage.large + ')';
+    summary.innerText = anime.synopsis;
 
 }
 
@@ -93,6 +96,18 @@ let updateCharaContent = function(){
     cover.style.backgroundImage = 'url(' + chara.image.original + ')';
     describe.innerText = chara.description;
     altName.innerText = chara.otherNames[0];
+
+}
+
+let animeSearch = function(){
+
+    const text = document.getElementById('search-box');
+    document.location.href = './project-zero1.html';
+    document.getElementById('search-box').value = text;
+    console.log(text.value);
+    apiUrl = 'https://kitsu.io/api/edge/anime?filter[text]=' + text.value;
+    //console.log(apiUrl);
+    //getAnimeUsingAsync();
 
 }
 
@@ -118,6 +133,6 @@ let charsearchBox = function(){
 
 }
 
-//document.getElementById('search').addEventListener('onclick', searchBox());
+//document.getElementById('search').addEventListener('click', searchBox());
 
 

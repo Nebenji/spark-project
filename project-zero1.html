@@ -20,17 +20,17 @@
                 <a href="./project-zero.html">
                     <li>Home</li>
                 </a>
-                <a href="./project-zero1.html">
-                    <li>Watchlist</li>
-                </a>
+                <!-- <a href="./project-zero1.html">
+                    <li>Anime</li>
+                </a> -->
+                <li>
+                        <input id="search-box" type="text" placeholder="Search for Anime here!">
+                        <button id="search" type="submit" onclick="searchBox()">Search</button>
+                </li>
                 <a href="./project-zero2.html">
                     <li>Characters</li>
                 </a>
-                <li>List Item</li>
-                <li>
-                    <input id="search-box" type="text" placeholder="Search for Anime here!">
-                    <button id="search" type="submit" onclick="searchBox()">Search</button>
-                </li>
+                <!-- <li>List Item</li> -->
             </ul>
         </nav>
     </header>
@@ -49,6 +49,10 @@
                 <br>
                 <label for="number-of-episodes">Number of Episodes:
                     <li id="episodes-count"></li>
+                </label>
+                <br>
+                <label for="synopsis">Synopsis: 
+                    <p id="summary"></p>
                 </label>
             </form>
         </div>
