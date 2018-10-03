@@ -31,9 +31,8 @@ let getAnimeUsingAsync = async function(){
     try{
         const response = await fetch(apiUrl);
         data = (await response.json());
-
+        console.log(data);
         anime = data.data[0].attributes;
-        //console.log((await response.json()));
         console.log(anime);
         updateAnimeContent();
     }
@@ -47,10 +46,9 @@ let getCharUsingAsync = async function(){
     try{
         const response = await fetch(charUrl);
         data = (await response.json());
-
+        console.log(data);
         chara = data.data[0].attributes;
-        //console.log(data);
-        //console.log(chara);
+        console.log(chara);
         updateCharaContent();
     }
     catch (err){
@@ -94,29 +92,16 @@ let updateCharaContent = function(){
     name.innerText = chara.canonicalName;
     poster.src = chara.image.original;
     cover.style.backgroundImage = 'url(' + chara.image.original + ')';
-    describe.innerText = chara.description;
+    describe.innerHTML = '';
+    describe.insertAdjacentHTML('afterbegin', chara.description);
     altName.innerText = chara.otherNames[0];
 
 }
 
-let animeSearch = function(){
+let anisearchBox = function(){
 
     const text = document.getElementById('search-box');
-    document.location.href = './project-zero1.html';
-    document.getElementById('search-box').value = text;
-    console.log(text.value);
     apiUrl = 'https://kitsu.io/api/edge/anime?filter[text]=' + text.value;
-    //console.log(apiUrl);
-    //getAnimeUsingAsync();
-
-}
-
-let searchBox = function(){
-
-    const text = document.getElementById('search-box');
-    //console.log(text.value);
-    apiUrl = 'https://kitsu.io/api/edge/anime?filter[text]=' + text.value;
-    //console.log(apiUrl);
     getAnimeUsingAsync();
     document.getElementById('search-box').value = '';
 
@@ -125,14 +110,11 @@ let searchBox = function(){
 let charsearchBox = function(){
 
     const text = document.getElementById('search-box');
-    //console.log(text.value);
     charUrl = 'https://kitsu.io/api/edge/characters?filter[name]=' + text.value;
-    //console.log(charUrl);
     getCharUsingAsync();
     document.getElementById('search-box').value = '';
 
 }
 
-//document.getElementById('search').addEventListener('click', searchBox());
 
 

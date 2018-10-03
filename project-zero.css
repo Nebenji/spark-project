@@ -3,12 +3,16 @@
 body{
     background: darkred;
     background-image: url('https://az616578.vo.msecnd.net/files/responsive/cover/main/desktop/2016/05/22/6359949242235344891413001074_All%20the%20anime.jpeg');
-    object-fit: contain;
+    background-size: auto;
 }
 
 a{
     color: inherit;
     text-decoration: inherit;
+}
+
+a:hover{
+    color: lightgray;
 }
 
 #title-bar{
@@ -25,6 +29,7 @@ a{
     border-top: 0;
     border-bottom: 2px solid black;
     z-index: 5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #title-bar > a > h1{
@@ -43,6 +48,15 @@ a{
 
 #title-bar > nav > ul > a > li:hover{
     color: lightgray;
+}
+
+button{
+
+    background-color: yellow;
+    border-block-start-color: goldenrod;
+    border-block-end-color: goldenrod;
+    cursor: pointer;
+
 }
 
 nav ul, nav li{
@@ -66,6 +80,7 @@ nav ul, nav li{
     min-height: 40vh;
 }
 
+
 h2{
 
     text-align: center;
@@ -82,6 +97,7 @@ div{
     border: 2px solid black;
     box-shadow: 0px 2px 2px 0px gray;
     list-style-type: square;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 div > img{
